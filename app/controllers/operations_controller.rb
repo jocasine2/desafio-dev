@@ -1,6 +1,13 @@
 class OperationsController < ApplicationController
   before_action :set_operation, only: [:show, :update, :destroy]
 
+  # GET /parser
+  def parser
+    tempfl = params[:file]
+    @lines = tempfl.read
+    binding.pry
+  end
+
   # GET /operations
   def index
     @operations = Operation.all
@@ -46,6 +53,6 @@ class OperationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def operation_params
-      params.require(:operation).permit(:transaction_type_id, :date, :value, :CPF, :card_number, :hour, :owner, :store_name)
+      params.require(:operation).permit(:transaction_type_id, :date, :value, :CPF, :card_number, :hour, :owner, :store_name, :file)
     end
 end
