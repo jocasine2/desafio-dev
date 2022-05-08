@@ -1,13 +1,6 @@
 class OperationsController < ApplicationController
   before_action :set_operation, only: [:show, :update, :destroy]
 
-  # GET /parser
-  def parser
-    tempfl = params[:file]
-    @lines = tempfl.read
-    binding.pry
-  end
-
   # GET /operations
   def index
     @operations = Operation.all
@@ -22,12 +15,24 @@ class OperationsController < ApplicationController
 
   # POST /operations
   def create
-    @operation = Operation.new(operation_params)
-
-    if @operation.save
-      render json: @operation, status: :created, location: @operation
+    if params[:file].present?
+      if Operation.parser(params[:file])
+        render json: {
+            message: 'Importado com sucesso'
+          }, status: :created
+      else
+        return render json: {
+            message: 'Erro importar aqruivo'
+          }, status: :precondition_failed
+      end
     else
-      render json: @operation.errors, status: :unprocessable_entity
+      @operation = Operation.new(operation_params)
+
+      if @operation.save
+        render json: @operation, status: :created, location: @operation
+      else
+        render json: @operation.errors, status: :unprocessable_entity
+      end
     end
   end
 
