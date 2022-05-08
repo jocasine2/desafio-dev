@@ -10,9 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_05_08_030121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "operations", force: :cascade do |t|
+    t.bigint "transaction_type_id", null: false
+    t.date "date"
+    t.bigint "value"
+    t.string "CPF"
+    t.string "card_number"
+    t.datetime "hour"
+    t.string "owner"
+    t.string "store_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["transaction_type_id"], name: "index_operations_on_transaction_type_id"
+  end
+
+  create_table "transaction_types", force: :cascade do |t|
+    t.string "description"
+    t.string "nature"
+    t.string "signal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "operations", "transaction_types"
 end
