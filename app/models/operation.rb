@@ -13,12 +13,12 @@ class Operation < ApplicationRecord
       op.value = line[9..18]
       op.CPF = line[19..29]
       op.card_number = line[30..42]
-      op.hour = line[42..47]
+      op.hour = line[42..43]+':'+line[44..45]+':'+line[46..47]
       op.owner = line[48..61]
       op.store_name = line[62..80]
       op.save
     end
-
+    
     true
   end
 end
