@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails"
-# Pick the frameworks you want=>
+# Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"
@@ -16,11 +16,11 @@ require "action_cable/engine"
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
-# you've limited to =>test, =>development, or =>production.
+# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module App
-  class Application < Rails=>=>Application
+  class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -38,14 +38,16 @@ module App
     config.api_only = true
     
     #remove validação do cors para ambiente de teste
-    config.action_dispatch.default_headers = {
-      'Content-Type'=> 'application/json',
-      'Access-Control-Allow-Origin'=> '*',
-      'Access-Control-Allow-Headers'=> 'Content-Type',
-      'Access-Control-Allow-Methods'=> 'GET,POST,OPTIONS,DELETE,PUT',
-      'Authorization'=> 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
-    }
-    @CrossOrigin(origins = "http://localhost:4200")
+    # config.action_dispatch.default_headers = {
+    #     'Access-Control-Allow-Origin' => '*',
+    #     'Access-Control-Request-Method' => 'GET, PATCH, PUT, POST, OPTIONS, DELETE'
+    # }
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end
 
