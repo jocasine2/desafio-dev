@@ -5,6 +5,8 @@ class Operation < ApplicationRecord
     #file = params[:file]
     @lines = file.read.force_encoding('UTF-8').split("\n")
 
+binding.pry
+
     @lines.each do |line|
       op = Operation.new
 
