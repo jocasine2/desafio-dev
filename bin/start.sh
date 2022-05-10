@@ -5,3 +5,4 @@ if [ -f tmp/pids/server.pid ]; then
 fi
 
 bin/rails s -p 3000 -b 0.0.0.0
+
