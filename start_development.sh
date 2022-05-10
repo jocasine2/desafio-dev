@@ -1,7 +1,7 @@
 #iniciando banco de dados
 sudo docker-compose up -d postgres
 
-#iniciando app em modo de debug
+#inicia api para mostrando os logs no terminal
 sudo docker-compose run --service-ports api
 
 #criando o banco de dados
