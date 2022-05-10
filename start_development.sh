@@ -5,6 +5,6 @@ sudo docker-compose up -d postgres
 sudo docker-compose run --service-ports api
 
 #criando o banco de dados
-# docker-compose run api rails db:create
-# docker-compose run api rails db:migrate
-# docker-compose run api rails db:seed
+docker-compose run api rails db:create
+docker-compose run api rails db:migrate
+docker-compose run api rails db:seed
