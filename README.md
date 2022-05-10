@@ -3,7 +3,7 @@
 <h1 align="center">Yay! You’re on Rails!</h1>
 
 
-## Inicie o docker-compose e atualizando as dependência
+## Inicie o docker-compose e atualizando as dependências
 ```
 ./start_development.sh
 ```
