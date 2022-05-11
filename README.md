@@ -2,9 +2,6 @@
 
 <h1 align="center">Yay! You’re on Rails!</h1>
 
-## Front-End
-https://github.com/jocasine2/desafio-dev-front-end
-
 ## Iniciando o docker-compose e atualizando as dependências
 ```
 sudo ./start_development.sh
@@ -13,13 +10,14 @@ sudo ./start_development.sh
 
 [http://localhost:3000/](http://localhost:3000/)
 
-
+## Front-End
+https://github.com/jocasine2/desafio-dev-front-end
 <br>
 
 # API
 
-## OPERAÇÃO
-### CRIAR
+### OPERAÇÃO
+#### CRIAR
 ```
 [POST] http://localhost:3000/operations
 ```
@@ -31,17 +29,17 @@ OU
 ```
 [POST] http://localhost:3000/operations/:id?options[date]=?options[value]=?options[CPF]=?options[card_number]=?options[hour]=?options[owner]=?options[store_name]=?
 ```
-### EDITAR
+#### EDITAR
 ```
 [PUT]	http://localhost:3000/operations/:id?options[date]=?options[value]=?options[CPF]=?options[card_number]=?options[hour]=?options[owner]=?options[store_name]=?
 ```	
 
-### DELETAR
+#### DELETAR
 ```
 [DELETE] http://localhost:3000/operations/:id
 ```
 
-### CONSULTAR
+#### CONSULTAR
 ```
 [GET] http://localhost:3000/operations
 ```
@@ -51,20 +49,20 @@ OU
 ```
 
 
-## TIPO DA TRANSAÇÃO
-### CRIAR
+### TIPO DA TRANSAÇÃO
+#### CRIAR
 ```
 [POST] http://localhost:3000/transaction_types?transaction_type[description]=?&transaction_type[nature]=?&transaction_type[signal]=?	
 ```	
-### EDITAR
+#### EDITAR
 ```
 [PUT] http://localhost:3000/transaction_types?transaction_type[description]=?&transaction_type[nature]=?&transaction_type[signal]=?	
 ```
-### DELETAR
+#### DELETAR
 ```
 [DELETE] http://localhost:3000/transaction_types/:id
 ```
-### CONSULTAR
+#### CONSULTAR
 ```
 [GET] http://localhost:3000/transaction_types
 ```
